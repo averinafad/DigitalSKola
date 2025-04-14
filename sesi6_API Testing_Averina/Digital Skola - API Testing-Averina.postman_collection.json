@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "302a24bf-4ac9-486e-93e4-bb21004af8e9",
+		"name": "Digital Skola - API Testing-Averina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42953324",
+		"_collection_link": "https://mini-bootcamp-digital-skolaaverina.postman.co/workspace/New-Team-Workspace~bef452d6-d2d4-4ad6-affa-32af38709b90/collection/42953324-302a24bf-4ac9-486e-93e4-bb21004af8e9?action=share&source=collection_link&creator=42953324"
+	},
+	"item": [
+		{
+			"name": "Bikin User Baru",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const contoh = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"title\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"title\",\r",
+							"    \"userId\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"json schema harus benar\",function(){\r",
+							"    pm.response.to.have.jsonSchema(contoh)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"HTTP status harus benar\",function(){\r",
+							"    pm.response.to.have.status(202)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Averina\",\r\n    \"userId\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/posts/add",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Data User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Fidelia\",\r\n    \"userId\": 26\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/posts/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ngambil Data User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Data User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/carts/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
