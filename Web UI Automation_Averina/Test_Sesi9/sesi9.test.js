@@ -1,14 +1,37 @@
 const{Builder, By, until} = require('selenium-webdriver');
 const assert = require('assert');
+const chrome = require('selenium-webdriver/chrome');
+// const firefox = require('selenium-webdriver/firefox');
 
 describe('Sauce Demo Test',function(){
     let driver;
 
-    it('Visit SauceDemo, Login, Cek Page Tittle',async function(){
-        driver = await new Builder(). forBrowser('chrome').build();
+    //Test Hook/Annotation 1 for Visit SauceDemo
+    before(async function () {
+        console.log(`Ini mulai buka web saucedemo:)`)
+        //kalau pakai chrome
+        options = new chrome.Options();
+        options.addArguments("--headless");
+        // driver = await new Builder(). forBrowser('chrome').build();
+        driver = await new Builder(). forBrowser('chrome').setChromeOptions(options).build();
+
+        // //kalau pakai firefox
+        // options = new firefox.Options();
+        // options.addArguments("--headless");
+        // // driver = await new Builder(). forBrowser('firefox').build();
+        // driver = await new Builder(). forBrowser('firefox').setFirefoxOptions(options).build();
 
         await driver.get('https://www.saucedemo.com');
-        
+    });
+
+    //Test Hook/Annotation 2
+    after(async function () {
+        console.log(`Ini udah beres ya jalanin testnya:)`)
+        await driver.sleep(5000);
+        await driver.quit();
+    });
+    
+    it('Validasi Berhasil Visit SauceDemo & Validasi Berhasil Login',async function(){     
         //Validasi Tittle
         const title = await driver.getTitle();
         assert.strictEqual(title, 'Swag Labs');
@@ -40,7 +63,9 @@ describe('Sauce Demo Test',function(){
     it('Sorting Z to A',async function(){
         // Pilih dropdown dan pilih "Name (Z to A)"
         const sortDropdown = await driver.findElement(By.className('product_sort_container'));
-        await sortDropdown.sendKeys('Name (Z to A)');
+        // await sortDropdown.sendKeys('Name (Z to A)');
+        await sortDropdown.findElement(By.css('option[value="za"]')).click();
+
 
         // Tunggu hasil sorting tampil
         await driver.sleep(3000);
@@ -65,7 +90,9 @@ describe('Sauce Demo Test',function(){
     it('Sorting Harga dari Rendah ke Tinggi', async function () {
         // Pilih dropdown dan pilih "Price (low to high)"
         const sortDropdown = await driver.findElement(By.className('product_sort_container'));
-        await sortDropdown.sendKeys('Price (low to high)');
+        // await sortDropdown.sendKeys('Price (low to high)');
+        await sortDropdown.findElement(By.css('option[value="lohi"]')).click();
+
         
         // Tunggu hasil sorting tampil
         await driver.sleep(1000);
@@ -83,7 +110,7 @@ describe('Sauce Demo Test',function(){
         const expectedSortedPrices = [...priceValues].sort((a, b) => a - b);
         assert.deepStrictEqual(priceValues, expectedSortedPrices, 'Harga tidak terurut dari rendah ke tinggi');
 
-        await driver.sleep(5000);
-        await driver.quit();
+        // await driver.sleep(5000);
+        // await driver.quit();
     });
 })
