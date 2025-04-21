@@ -556,10 +556,10 @@ body {
                     <li class="passes">passes: <em>3</em></li>
                     <li class="pending">pending: <em>0</em></li>
                     <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>17.4s</em></li>
+                    <li class="duration">duration: <em>16s</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>Sauce Demo Test</h1><ul><li class="test pass slow"><h2>Validasi Berhasil Visit SauceDemo &#x26; Validasi Berhasil Login<span class="duration">588ms</span></h2><pre><code>async function(){     
+            <ul id="report"><li class="suite"><h1>Sauce Demo Test</h1><ul><li class="test pass slow"><h2>Validasi Berhasil Visit SauceDemo &#x26; Validasi Berhasil Login<span class="duration">383ms</span></h2><pre><code>async function(){     
         //Validasi Tittle
         const title = await driver.getTitle();
         assert.strictEqual(title, &#x27;Swag Labs&#x27;);
@@ -582,7 +582,7 @@ body {
         assert.strictEqual(logotext,&#x27;Swag Labs&#x27;)
         // await driver.sleep(3000);
         // await driver.quit();
-    }</code></pre></li><li class="test pass slow"><h2>Sorting Z to A<span class="duration">8151ms</span></h2><pre><code>async function(){
+    }</code></pre></li><li class="test pass slow"><h2>Sorting Z to A<span class="duration">8127ms</span></h2><pre><code>async function(){
         // Pilih dropdown dan pilih &#x22;Name (Z to A)&#x22;
         const sortDropdown = await driver.findElement(By.className(&#x27;product_sort_container&#x27;));
         // await sortDropdown.sendKeys(&#x27;Name (Z to A)&#x27;);
@@ -603,7 +603,7 @@ body {
         
         await driver.sleep(5000);
         // await driver.quit();
-    }</code></pre></li><li class="test pass slow"><h2>Sorting Harga dari Rendah ke Tinggi<span class="duration">1112ms</span></h2><pre><code>async function () {
+    }</code></pre></li><li class="test pass slow"><h2>Sorting Harga dari Rendah ke Tinggi<span class="duration">1091ms</span></h2><pre><code>async function () {
         // Pilih dropdown dan pilih &#x22;Price (low to high)&#x22;
         const sortDropdown = await driver.findElement(By.className(&#x27;product_sort_container&#x27;));
         // await sortDropdown.sendKeys(&#x27;Price (low to high)&#x27;);
